@@ -1,0 +1,259 @@
+/**
+ * @file name    : students.css
+ * @created time : 2018/02/24 9:07
+ * @update time  : 2018/02/26 9:00
+ * @author       : smpower
+ * @mail         : bzsjxhywrf@outlook.com
+ * @github       : https://github.com/smpower/
+*/
+
+/* Start : header area - 页面头部 */
+.header {  /* 页面头部根容器 */
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  background: #fff;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, .3);
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.header-logo {  /* LOGO 样式 */
+  width: 127px;
+  height: 33px;
+  background: url("../images/util/logo.png") no-repeat center center;
+  background-size: 100%;
+  margin: 0 60px;
+}
+.header-position,  /* 当前登录人职位 */
+.header-superior {  /* 当前登录人上级领导姓名 */
+  height: 34px;
+  line-height: 34px;
+  background: #dfdfdf;
+  color: #616161;
+  padding: 0 20px;
+  margin: 0 10px;
+  border-radius: 3px;
+}
+.header-self {  /* 页面头部通知按钮、用户头像、用户姓名的根容器样式 */
+  height: 60px;
+  line-height: 60px;
+  position: absolute;
+  top: 0;
+  right: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header-self-avatar_name {  /** 当前登录人头像及姓名 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header-self-information,  /* 页面头部通知按钮 */
+.header-self-avatar {  /* 用户头像 */
+  vertical-align: middle;
+}
+.header-self-information {  /* 页面头部通知按钮 */
+  width: 20px;
+  height: 24px;
+  background: url("../images/util/icon-header-information.png") no-repeat center center;
+  background-size: 100%;
+  cursor: pointer;
+}
+.header-self-avatar {  /* 用户头像 */
+  width: 24px;
+  height: 24px;
+  background: url("../images/util/icon-header-avatar.png") no-repeat center center;
+  background-size: 100%;
+  margin-left: 10px;
+  cursor: pointer;
+}
+.header-self-name {  /* 用户姓名 */
+  padding-left: 10px;
+  cursor: pointer;
+}
+/* End : header area - 页面头部 */
+
+/* Start : ora - 页面主体区域 */
+.ora {
+  max-width: 1920px;
+}
+
+.ora-nav {  /* 页面左侧导航 */
+  width: 180px;
+  height: 100vh;
+  min-height: 600px;
+  background: #4c4b4a;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: fixed;
+  top: 60px;
+  left: 0;
+}
+
+.ora-nav-btn-toggle {  /* 导航菜单收回按钮父容器 */
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+}
+.ora-nav-btn-toggle-icon {  /* 导航菜单收回按钮 */
+  width: 18px;
+  height: 18px;
+  background: url("../images/util/icon-menu-extend.png") no-repeat center center;
+  background-size: 100%;
+  vertical-align: middle;
+  transition: all .3s;
+}
+.ora-nav-btn-toggle-icon.rotate {  /** 导航菜单收起按钮旋转样式 */
+  transform: rotate(180deg);
+}
+.ora-nav-btn-toggle {  /* 导航菜单收回按钮父容器 */
+  cursor: pointer;
+}
+
+.ora-nav-btn-item {  /* 导航按钮元素 */
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  top: 0;
+  left: 0;
+  transition: all .3s;
+}
+.ora-nav-btn-item.active,
+.ora-nav-btn-item:hover {
+  background: #565656;
+}
+.ora-nav-btn-students-icon,  /* 学员管理按钮 */
+.ora-nav-btn-performance-icon,  /* 业绩管理按钮 */
+.ora-nav-btn-chart-icon,  /* 业绩图表按钮 */
+.ora-nav-btn-sell-icon,  /* 销售管理按钮 */
+.ora-nav-btn-permission-icon {  /* 权限管理按钮 */
+  width: 16px;
+  height: 16px;
+  background-size: 100%;
+  margin-right: 20px;
+  transition: all .3s;
+}
+.ora-nav-btn-sell-icon {  /* 销售管理按钮 */
+  height: 18px;
+}
+.ora-nav-btn-item-border {  /* 左侧导航菜单按钮边框 */
+  transition: all .3s;
+}
+.ora-nav-btn-item-border.active,
+.ora-nav-btn-item:hover .ora-nav-btn-item-border {  /* 左侧导航菜单按钮边框 - 激活 */
+  width: 4px;
+  height: 50px;
+  line-height: 50px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #ff8b4b;
+}
+
+.ora-nav-btn-students-icon {  /* 学员管理按钮 */
+  background: url("../images/util/icon-tab-students-default.png") no-repeat center center;
+}
+.ora-nav-btn-students-icon.active,
+.ora-nav-btn-item:hover .ora-nav-btn-students-icon {  /* 学员管理按钮 - 激活 */
+  background: url("../images/util/icon-tab-students-selected.png") no-repeat center center;
+}
+
+.ora-nav-btn-performance-icon {  /* 业绩管理按钮 */
+  background: url("../images/util/icon-tab-achievement-default.png") no-repeat center center;
+}
+.ora-nav-btn-performance-icon.active,
+.ora-nav-btn-item:hover .ora-nav-btn-performance-icon {  /* 业绩管理按钮 - 激活 */
+  background: url("../images/util/icon-tab-achievement-selected.png") no-repeat center center;
+}
+
+.ora-nav-btn-chart-icon {  /* 业绩图表按钮 */
+  background: url("../images/util/icon-tab-chart-default.png") no-repeat center center;
+}
+.ora-nav-btn-chart-icon.active,
+.ora-nav-btn-item:hover .ora-nav-btn-chart-icon {  /* 业绩图表按钮 - 激活 */
+  background: url("../images/util/icon-tab-chart-selected.png") no-repeat center center;
+}
+
+.ora-nav-btn-sell-icon {  /* 销售管理按钮 */
+  background: url("../images/util/icon-tab-sell-default.png") no-repeat center center;
+}
+.ora-nav-btn-sell-icon.active,
+.ora-nav-btn-item:hover .ora-nav-btn-sell-icon {  /* 销售管理按钮 - 激活 */
+  background: url("../images/util/icon-tab-sell-selected.png") no-repeat center center;
+}
+
+.ora-nav-btn-permission-icon {  /* 权限管理按钮 */
+  background: url("../images/util/icon-tab-permission-default.png") no-repeat center center;
+}
+.ora-nav-btn-permission-icon.active,
+.ora-nav-btn-item:hover .ora-nav-btn-permission-icon {  /* 权限管理按钮 */
+  background: url("../images/util/icon-tab-permission-selected.png") no-repeat center center;
+}
+
+.ora-nav-btn-students-txt,  /* 学员管理按钮 */
+.ora-nav-btn-performance-txt,  /* 业绩管理按钮 */
+.ora-nav-btn-chart-txt,  /* 业绩图表按钮 */
+.ora-nav-btn-sell-txt,  /* 销售管理按钮 */
+.ora-nav-btn-permission-txt,  /* 权限管理按钮 */
+.ora-nav-logout-txt {  /* 退出按钮 */
+  font-size: 16px;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.ora-nav-logout {  /* 退出按钮 */
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 120px;
+  left: 0;
+  cursor: pointer;
+}
+.ora-nav-logout-icon {
+  width: 20px;
+  height: 16px;
+  background: url("../images/util/icon-tab-logout-default.png") no-repeat center center;
+  background-size: 100%;
+  margin-right: 20px;
+}
+
+
+
+.ora-main {  /* 主要视图区 */
+  margin-top: 60px;
+  margin-left: 180px;
+  padding: 0 50px;
+}
+
+.ora-main-students {  /** 学员管理模块 */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.ora-main-students-top {  /** 学员管理模块上半部分 */
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.ora-main-students-top-left {  /** 学员管理模块上半部分左侧 */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-content: flex-start;
+}
+.ora-main-students-top-right {  /** 学员管理模块上半部分右侧 */}
+.ora-main-students-bottom {  /** 学员管理模块下半部分 */}
+/* End : ora - 页面主体区域 */

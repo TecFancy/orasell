@@ -1,0 +1,144 @@
+/**
+ * @file name    : style
+ * @created time : 2018/2/24 9:08
+ * @author       : smpower
+ * @mail         : bzsjxhywrf@outlook.com
+ * @github       : https://github.com/smpower/
+*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul,
+li {
+  padding: 0;
+  margin: 0;
+  font-size: 12px;
+  color: #313131;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background: #fdfaf9;
+}
+
+span {
+  display: inline-block;
+  color: #616161;
+  font-size: 14px;
+}
+
+.hidden {  /* 隐藏元素 */
+  display: none;
+}
+
+.strong {  /* 加粗字体 */
+  font-weight: bold;
+}
+.italic {  /* 倾斜字体 */
+  font-style: italic;
+}
+
+.text-center {  /* 文字居中 */
+  text-align: center;
+}
+.text-left {  /* 文字居左 */
+  text-align: left;
+}
+.text-right {  /* 文字居右 */
+  text-align: right;
+}
+
+.row-center {  /* 元素水平居中 */
+  display: flex;
+  justify-content: center;
+}
+.column-center {  /* 元素垂直居中 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.row-column-center,
+.column-row-center {  /* 元素水平垂直居中 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.row-left-column-center,
+.column-center-row-left {  /* 元素水平居左, 垂直居中 */
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.row-right-column-center,
+.column-center-row-left {  /* 元素水平居右, 垂直居中 */
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.column-top-row-center,
+.row-center-column-top {  /* 元素垂直居上, 水平居中 */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.column-bottom-row-center,
+.row-center-column-bottom {  /* 元素垂直居下, 水平居中 */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+button {  /* 按钮样式 */
+  border: none;
+  border-radius: 3px;
+}
+.red-btn {  /* 红色按钮样式 */
+  background: #ff785b;
+}
+.green-btn {  /* 绿色按钮样式 */
+  background: #5bc598;
+}
+.blue-btn {  /* 蓝色按钮样式 */
+  background: #74b2ec;
+}
+
+input {  /* 输入框样式 */
+  border: 1px solid #d0d0d0;
+  border-radius: 3px;
+  padding: 5px 10px;
+  transition: all .3s;
+}
+input:focus {
+  outline: none;
+  border: 1px solid #5bc598;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+/* 自定义备注的滚动条样式 */
+textarea::-webkit-scrollbar {
+  width: 8px;
+  height: 1px;
+}
+textarea::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #939393;
+}
+textarea::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: transparent;
+}

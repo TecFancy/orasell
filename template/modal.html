@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>模态框</title>
+
+    <!-- import our stylesheet -->
+    <link rel="stylesheet" href="../css/plugin/modal.css">
+
+    <!-- import third-party javascript -->
+    <script src="../js/jq/jquery-3.2.1.min.js" charset="utf-8"></script>
+
+    <!-- import our javascript -->
+    <script src="../js/plugin/modal.js" charset="utf-8"></script>
+
+    <script type="text/javascript">
+      $(function () {
+        // 初始化模态框
+        modal.initModule($('#modal'), $('button'), {
+          width       : 450,
+          height      : 300,
+          titleHeight : 40,
+          closeWidth  : 25,
+          closeHeight : 25
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <button type="button" name="button">显示模态框</button>
+
+    <!-- Start : modal -->
+    <div class="modal" id="modal">
+      <!-- Start : 模态层 -->
+      <div class="modal-layer"></div>
+      <!-- End : 模态层 -->
+
+      <!-- Start : 模态框 -->
+      <div class="modal-box">
+        <!-- Start : 模态框标题 -->
+        <p class="modal-box-title text-center">标题党</p>
+        <!-- End : 模态框标题 -->
+
+        <!-- Start : 关闭模态框的按钮 -->
+        <span class="modal-box-close"></span>
+        <!-- End : 关闭模态框的按钮 -->
+      </div>
+      <!-- End : 模态框 -->
+    </div>
+    <!-- End : modal -->
+  </body>
+</html>

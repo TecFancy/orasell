@@ -1,0 +1,90 @@
+/* Start : pagination styles */
+.margin-px {
+  margin: 0 3px;
+}
+.text-center {
+  text-align: center;
+}
+.not-allowed {
+  cursor: not-allowed;
+  background: lightgray;
+  color: #fff;
+}
+span,
+input,
+button {
+  border-radius: 3px;
+}
+
+.pagination {
+  margin: 0 auto;
+  width: 1520px;
+  margin: 0;
+  padding-left: 46px;
+}
+.pagination-content-page {
+  display: none;
+}
+.pagination-content-page.active {
+  display: block
+}
+
+.pagination-control {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 20px;
+}
+.pagination-control span {
+  display: inline-block;
+  padding: 3px;
+  border: 1px solid #ddd;
+
+  /* 屏蔽双击选中文字 */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+.pagination-controllers {
+  display: flex;
+  justify-content: center;
+}
+.pagination-controllers span {
+  width: 20px;
+}
+.pagination-controllers span.active {
+  background: #27b3a5;
+  border: 1px solid #27b3a5;
+  color: #fff;
+}
+
+.pagination-jump {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 20px;
+}
+.pagination-jump span {
+  border: none;
+}
+.pagination-jump input {
+  width: 30px;
+  height: 25px;
+  line-height: 20px;
+  vertical-align: middle;
+  border: 1px solid #ddd;
+  text-align: center;
+  margin: 0 5px;
+}
+.pagination-jump button {
+  border: 1px solid #ddd;
+  background: #fff;
+  width: 50px;
+  height: 29px;
+  text-align: center;
+  cursor: pointer;
+  margin-left: 10px;
+}
+.pagination-jump button:focus {
+  outline: none;
+}
+/* End : pagination styles */
