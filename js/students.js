@@ -105,9 +105,9 @@
     formatUserInfo,  /** 格式化当前登录人信息 */
 
     renderHeaderContent,  /** 渲染页面头部信息 */
+    toggleInfoPanel,  /** 展开或收起页面头部通知面板 */
     renderPersonalData,  /** 渲染个人资料 */
     closePersonalDataModal,  /** 关闭个人资料模态框 */
-    toggleInfoPanel,  /** 展开或收起页面头部通知面板 */
     toggleNav,  /** 展开或收起页面左侧导航菜单 */
     pageJump,  /** 页面跳转 */
 
@@ -117,14 +117,8 @@
   ;
   // ----------------------- END MODULE SCOPE VARIABLES -----------------------
 
-
-
-
   // ---------------------------- BEGIN AJAX METHODS --------------------------
   // ----------------------------- END AJAX METHODS ---------------------------
-
-
-
 
   // -------------------------- BEGIN UTILITY METHODS -------------------------
 
@@ -137,7 +131,7 @@
    * @param {string} userinfo_map.superiorS - 当前登录人上级领导的姓名
    * @returns {Object} 格式化后的当前登录人信息映射
   */
-  formatUserInfo = function (userinfo_map) {
+  formatUserInfo = userinfo_map => {
     var userinfo, user_position_num, user_position_txt;
 
     /** 格式化当前登录人职位信息 */
@@ -185,15 +179,13 @@
   };
   // -------------------------- BEGIN UTILITY METHODS -------------------------
 
-
-
-
   // ---------------------------- BEGIN DOM METHODS ---------------------------
+
   /**
    * 缓存 DOM 集合
    * @func [setVarMap]
   */
-  setVarMap = function () {
+  setVarMap = () => {
     var
       body = varMap.body,
       header = body.querySelector('header'),
@@ -207,7 +199,8 @@
       main_sell = main.querySelector('.ora-main-sell'),
       main_permission = main.querySelector('.ora-main-permission'),
       modal = body.querySelector('.modal-collections'),
-      modal_personal_data = modal.querySelector('.modal-personal-data')
+      modal_personal_data = modal.querySelector('.modal-personal-data'),
+      modal_info_panel = modal.querySelector('.modal-info-panel')
     ;
 
     /**
@@ -359,6 +352,12 @@
         personal_data : {
           root : modal_personal_data,
           btn_close : modal_personal_data.querySelector('.modal-box-close')
+        },
+        info_panel : {
+          root :modal_info_panel,
+          title : modal_info_panel.querySelector('.modal-box-title'),
+          btn_close : modal_info_panel.querySelector('.modal-box-close'),
+          content : modal_info_panel.querySelector('.modal-box-content')
         }
       }
     };
@@ -374,7 +373,7 @@
    * @property {string} user_position_txt - 当前登录人职位的文字表示形式
    * @property {string} user_superior - 当前登录人上级领导的姓名
   */
-  renderHeaderContent = function (userinfo_map) {
+  renderHeaderContent = userinfo_map => {
     /** 格式化后的当前登录人信息映射 */
     var userinfo_map  = formatUserInfo(userinfo_map);
 
@@ -396,16 +395,99 @@
   /**
    * 展开或收起页面头部通知面板
    * @func [toggleInfoPanel]
+   * @param {object} arg_map
+   * @param {boolean} arg_map.is_close - 当值为 true 时, 通知面板处于关闭状态
+   * @param {boolean} arg_map.is_close - 当值为 false 时, 通知面板处于打开状态
   */
-  toggleInfoPanel = function () {
-    console.log('toggle info panel');
+  toggleInfoPanel = (arg_map) => {
+    var
+      target = event.target || window.event.target,
+      is_close = arg_map.is_close,
+      infoPanelModal = new Modal($(varMap.modal.info_panel.root), {
+        width : 584,
+        height : 300,
+        titleHeight : 40
+      })
+    ;
+
+    return () => {
+      if (is_close) {
+        /** 显示通知面板模态框 */
+        infoPanelModal.showModal();
+
+        varMap.modal.info_panel.root
+          .setAttribute('data-is_close', 'false');
+
+        return true;
+      }
+
+      /** 隐藏通知面板模态框 */
+      infoPanelModal.hideModal();
+      varMap.modal.info_panel.root
+        .setAttribute('data-is_close', 'true');
+    };
+  };
+  /**
+   * 通知面板模态框切换标签及内容
+   * @func [toggleInfoPanel.toggleTC]
+  */
+  toggleInfoPanel.toggleTC = () => {
+    var
+      target = event.target || window.event.target,
+      title = varMap.modal.info_panel.title,
+      content = varMap.modal.info_panel.content,
+      tab_one = title.querySelector('.tab-one'),
+      tab_two = title.querySelector('.tab-two'),
+      content_one = content.querySelector('.content-one'),
+      content_two = content.querySelector('.content-two'),
+      activeTab, activeContent
+    ;
+
+    /** 切换标签 */
+    toggleTab = arg_map => {
+      var
+        active_tab = arg_map.active_tab,
+        normal_tab = arg_map.normal_tab
+      ;
+
+      /** 激活标签 */
+      active_tab.classList.add('active');
+      /** 标签默认样式 */
+      normal_tab.classList.remove('active');
+    };
+
+    /** 切换内容 */
+    toggleContent = arg_map => {
+      var
+        active_content = arg_map.active_content,
+        normal_content = arg_map.normal_content
+      ;
+
+      /** 激活内容区 */
+      active_content.classList.remove('hidden');
+      /** 隐藏内容区 */
+      normal_content.classList.add('hidden');
+    };
+
+    switch (target) {
+      case tab_one :  /** 标签一 */
+        toggleTab({ active_tab : tab_one, normal_tab : tab_two });
+        toggleContent({ active_content : content_one, normal_content : content_two });
+        break;
+      case tab_two :  /** 标签二 */
+        toggleTab({ active_tab : tab_two, normal_tab : tab_one });
+        toggleContent({ active_content : content_two, normal_content : content_one });
+        break;
+      default:
+        break;
+    }
   };
 
   /**
    * 渲染当前登录人个人信息(模态框)
    * @func [renderPersonalData]
   */
-  renderPersonalData = function (modal_state) {
+  renderPersonalData = modal_state => {
     var
       /** 个人资料模态框 */
       personalDataModal
@@ -424,7 +506,7 @@
    * 关闭个人资料模态框
    * @func [closePersonalDataModal]
   */
-  closePersonalDataModal = function () {
+  closePersonalDataModal = () => {
     var personalDataModal = new Modal($(varMap.modal.personal_data.root), {
       width       : 920,
       height      : 750,
@@ -437,7 +519,7 @@
   * 展开或收起页面左侧导航菜单
   * @func [toggleNav]
   */
-  toggleNav = function () {
+  toggleNav = () => {
     var
       nav_width = varMap.nav.root.clientWidth,
       is_open = nav_width === configMap.nav.px_extend_width,
@@ -517,7 +599,7 @@
    * @func [pageJump]
    * @param {Object} event - MouseEvent 对象
   */
-  pageJump = function (event) {
+  pageJump = event => {
     var
       target = event.target || window.event.target,  /** 目标元素 */
       removeStyle, addStyle, toggleModule, i
@@ -790,9 +872,19 @@
    * 点击事件监听/处理程序
    * @func [onClick]
   */
-  onClick = function () {
-    /** 展开或收起页面头部通知面板按钮 */
-    varMap.header.btn_info.addEventListener('click', toggleInfoPanel, false);
+  onClick = () => {
+    /** 打开页面头部通知面板按钮 */
+    varMap.header.btn_info.addEventListener(
+      'click', toggleInfoPanel({ is_close : true }), false
+    );
+    /** 关闭页面头部通知面板按钮 */
+    varMap.modal.info_panel.btn_close.addEventListener(
+      'click', toggleInfoPanel({ is_close : false }), false
+    );
+    /** 点击通知面板模态框中的标签 */
+    varMap.modal.info_panel.title.addEventListener(
+      'click', toggleInfoPanel.toggleTC, false
+    );
 
     /** 页面头部个人资料按钮 */
     varMap.header.btn_self.addEventListener('click', renderPersonalData, false);

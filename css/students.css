@@ -257,3 +257,34 @@
 .ora-main-students-top-right {  /** 学员管理模块上半部分右侧 */}
 .ora-main-students-bottom {  /** 学员管理模块下半部分 */}
 /* End : ora - 页面主体区域 */
+
+
+/* Start : 模态框集合 */
+.modal-personal-data .modal-box-title {
+  font-size: 24px;
+  color: #fff;
+}
+.modal-info-panel .modal-box-title {
+  width: 100% !important;
+  background: #fe8b4a;
+  padding: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.modal-info-panel .modal-box-title span {
+  font-size: 18px;
+  color: #fff;
+  letter-spacing: normal;
+  padding: 0 20px;
+  cursor: pointer;
+  transition: all .3s;
+}
+.modal-info-panel .modal-box-title span.active {
+  color: #313131;
+  background: #fff;
+  border-radius: 3px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+/* End : 模态框集合 */
